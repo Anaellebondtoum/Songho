@@ -1,4 +1,4 @@
-:root {
+/* :root {
   /* Nouvelles couleurs pour le thème Bois */
   --bg        : #2c1d11; /* Fond de page sombre, style table en bois foncé */
   --surface   : #e6baa1; /* Couleur du plateau : bois clair/moyen */
@@ -38,6 +38,7 @@
   box-shadow: inset 0 4px 6px rgba(0,0,0,0.2), 0 0 15px var(--active);
   cursor: pointer;
 }
+*/
 
 /* ════════════════════════════════════════════════════
    1. VARIABLES & RESET
