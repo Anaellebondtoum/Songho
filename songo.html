@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Songho — Jeu de stratégie</title>
+
+  <!--
+  ╔══════════════════════════════════════════════════════════════╗
+  ║  SONGHO / SONGO — Version 1 : 2 joueurs, même navigateur   ║
+  ║  Auteur  : [Ton nom]          Matricule : [Ton matricule]   ║
+  ║  Niveau  : Licence 2          Université de Yaoundé I       ║
+  ╚══════════════════════════════════════════════════════════════╝
+
+  FICHIERS DU PROJET
+  ────────────────────────────────────────────────
+  songo.html   ← structure de la page (ce fichier)
+  songo.css    ← mise en page et style visuel
+  songo.js     ← moteur du jeu + interface DOM
+  -->
+
+  <link rel="stylesheet" href="songo.css" />
+</head>
+
+<body>
+
+  <!-- ══════════════════════════════════════════
+       EN-TÊTE
+  ══════════════════════════════════════════ -->
+  <header>
+    <h1>Songho</h1>
+    <p>Jeu de semailles traditionnel · 2 joueurs</p>
+  </header>
+
+
+  <!-- ══════════════════════════════════════════
+       CONFIGURATION : saisie des noms
+  ══════════════════════════════════════════ -->
+  <div id="config-zone">
+    <label>
+      Joueur Nord
+      <input type="text" id="input-north" placeholder="Nom du joueur Nord" maxlength="20" />
+    </label>
+
+    <div id="controls">
+      <button id="btn-start">Nouvelle partie</button>
+      <button id="btn-rules">Règles</button>
+    </div>
+
+    <label>
+      Joueur Sud
+      <input type="text" id="input-south" placeholder="Nom du joueur Sud" maxlength="20" />
+    </label>
+  </div>
+
+
+  <!-- ══════════════════════════════════════════
+       SCORES ET INDICATEUR DE TOUR
+  ══════════════════════════════════════════ -->
+  <div id="scores">
+
+    <div class="score-card" id="card-north">
+      <div class="player-name" id="label-north">Nord</div>
+      <div class="score-value" id="score-north">0</div>
+    </div>
+
+    <div id="turn-text">—</div>
+
+    <div class="score-card" id="card-south">
+      <div class="player-name" id="label-south">Sud</div>
+      <div class="score-value" id="score-south">0</div>
+    </div>
+
+  </div>
+
+
+  <!-- ══════════════════════════════════════════
+       TABLIER
+
+       SENS D'AFFICHAGE (selon la formalisation) :
+         Rangée Nord : N6  N5  N4  N3  N2  N1  N0
+                       ←  Nord joue de droite à gauche
+         ────────────────────────────────────────
+         Rangée Sud  : S0  S1  S2  S3  S4  S5  S6
+                       Sud joue de gauche à droite  →
+
+       Les cases sont créées par songo.js (buildRow)
+       et leurs data-pit sont mis à jour par renderBoard().
+  ══════════════════════════════════════════ -->
+  <div id="board-container">
+
+    <!-- Étiquette et cases de Nord -->
+    <div class="row-label">← Nord joue de droite à gauche</div>
+    <div class="board-row" id="row-north"></div>
+
+    <div class="board-divider"></div>
+
+    <!-- Cases et étiquette de Sud -->
+    <div class="board-row" id="row-south"></div>
+    <div class="row-label bottom">Sud joue de gauche à droite →</div>
+
+  </div>
+
+
+  <!-- ══════════════════════════════════════════
+       MESSAGE DE FEEDBACK
+  ══════════════════════════════════════════ -->
+  <div id="message-box">Entrez vos noms puis cliquez sur « Nouvelle partie ».</div>
+
+  <!-- Éléments cachés pour les noms dans les turn indicators (utilisés par JS) -->
+  <span id="turn-name-north" style="display:none"></span>
+  <span id="turn-name-south" style="display:none"></span>
+
+
+  <!-- ══════════════════════════════════════════
+       OVERLAY FIN DE PARTIE
+  ══════════════════════════════════════════ -->
+  <div id="end-overlay">
+    <div id="end-card">
+      <div class="trophy" id="end-trophy">🏆</div>
+      <h2 id="end-title">Victoire !</h2>
+      <p id="end-detail"></p>
+      <button id="btn-end-new">Rejouer</button>
+    </div>
+  </div>
+
+
+  <!-- Chargement du moteur de jeu et de l'interface -->
+  <script src="songo.js"></script>
+
+</body>
+</html>

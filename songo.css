@@ -1,0 +1,433 @@
+/*
+╔══════════════════════════════════════════════════════╗
+║  SONGHO — Feuille de style                          ║
+║  Auteur  : [Ton nom]   Matricule : [Ton matricule]  ║
+╚══════════════════════════════════════════════════════╝
+
+  SECTIONS
+  ─────────────────────────────────────────────────────
+  1. Variables & reset
+  2. Corps de page
+  3. En-tête
+  4. Zone de configuration (noms des joueurs)
+  5. Scores et indicateur de tour
+  6. Tablier
+  7. Cases (pits)
+  8. Zone de message
+  9. Boutons
+  10. Overlay fin de partie
+  11. Animations
+  12. Responsive
+*/
+:root {
+  /* Nouvelles couleurs pour le thème Bois */
+  --bg        : #2c1d11; /* Fond de page sombre, style table en bois foncé */
+  --surface   : #e6baa1; /* Couleur du plateau : bois clair/moyen */
+  --border    : #5c3a21; /* Bordures bois foncé */
+  --text      : #2c1d11;
+  --muted     : #7a5335;
+  --accent    : #5c3a21;
+  --gold      : #d4af37;
+  --seed      : #3d2516; /* Graines foncées comme des billes de bois ou de néré */
+  --seed-bg   : #c69575; /* Intérieur des cases creuses */
+  --active    : #27593f;
+  --active-bg : #d0ebd5;
+  --danger    : #a63a1e;
+}
+
+/* Effet texture et relief pour le tablier */
+#board-container {
+  background: var(--surface);
+  border: 8px solid var(--border);
+  border-radius: 24px;
+  box-shadow: inset 0 0 20px rgba(0,0,0,0.4), 0 16px 40px rgba(0,0,0,0.6);
+  padding: 30px;
+}
+
+/* Effet creusé pour les cases (pits) */
+.pit {
+  background: var(--seed-bg);
+  border: 3px solid var(--border);
+  border-radius: 50%; /* Cases bien rondes, comme des trous */
+  box-shadow: inset 0 8px 12px rgba(0,0,0,0.3);
+  transition: all 0.2s ease;
+}
+
+/* Effet de surbrillance quand c'est une case jouable */
+.pit.playable:hover {
+  transform: scale(1.05);
+  box-shadow: inset 0 4px 6px rgba(0,0,0,0.2), 0 0 15px var(--active);
+  cursor: pointer;
+}
+
+/* ════════════════════════════════════════════════════
+   1. VARIABLES & RESET
+════════════════════════════════════════════════════ */
+:root {
+  --bg        : #F7F5F2;
+  --surface   : #FFFFFF;
+  --border    : #E0DBD4;
+  --text      : #1A1714;
+  --muted     : #8A827A;
+  --accent    : #4A3728;
+  --gold      : #C49A3C;
+  --seed      : #6B4F3A;
+  --seed-bg   : #EDE5D8;
+  --active    : #3D7A5E;
+  --active-bg : #EBF5F0;
+  --danger    : #B84C30;
+  --shadow    : 0 2px 12px rgba(74,55,40,0.10);
+  --radius    : 12px;
+  --t         : 180ms ease;
+}
+
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+
+/* ════════════════════════════════════════════════════
+   2. CORPS DE PAGE
+════════════════════════════════════════════════════ */
+body {
+  font-family: 'Segoe UI', system-ui, sans-serif;
+  background: var(--bg);
+  color: var(--text);
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 24px 16px 48px;
+  gap: 20px;
+}
+
+
+/* ════════════════════════════════════════════════════
+   3. EN-TÊTE
+════════════════════════════════════════════════════ */
+header {
+  text-align: center;
+}
+header h1 {
+  font-size: 2rem;
+  font-weight: 700;
+  letter-spacing: -0.03em;
+  color: var(--accent);
+}
+header p {
+  color: var(--muted);
+  font-size: 0.875rem;
+  margin-top: 4px;
+}
+
+
+/* ════════════════════════════════════════════════════
+   4. ZONE DE CONFIGURATION (noms des joueurs)
+════════════════════════════════════════════════════ */
+#config-zone {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 16px 24px;
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  flex-wrap: wrap;
+  justify-content: center;
+  box-shadow: var(--shadow);
+  width: 100%;
+  max-width: 600px;
+}
+#config-zone label {
+  font-size: 0.78rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.07em;
+  color: var(--muted);
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+#config-zone input[type="text"] {
+  padding: 7px 12px;
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  font-size: 0.9rem;
+  color: var(--text);
+  background: var(--bg);
+  outline: none;
+  transition: border-color var(--t);
+  width: 140px;
+}
+#config-zone input[type="text"]:focus {
+  border-color: var(--accent);
+}
+
+
+/* ════════════════════════════════════════════════════
+   5. SCORES ET INDICATEUR DE TOUR
+════════════════════════════════════════════════════ */
+#scores {
+  display: flex;
+  gap: 24px;
+  align-items: center;
+}
+.score-card {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 12px 24px;
+  text-align: center;
+  min-width: 110px;
+  box-shadow: var(--shadow);
+  transition: border-color var(--t), background var(--t);
+}
+.score-card.active-player {
+  border-color: var(--active);
+  background: var(--active-bg);
+}
+.score-card .player-name {
+  font-size: 0.72rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: var(--muted);
+}
+.score-card .score-value {
+  font-size: 2rem;
+  font-weight: 700;
+  color: var(--accent);
+  line-height: 1.1;
+}
+.score-card.active-player .score-value {
+  color: var(--active);
+}
+#turn-text {
+  font-size: 0.78rem;
+  color: var(--muted);
+  text-align: center;
+  font-style: italic;
+  max-width: 80px;
+  line-height: 1.4;
+}
+
+
+/* ════════════════════════════════════════════════════
+   6. TABLIER
+════════════════════════════════════════════════════ */
+#board-container {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 20px;
+  padding: 20px 20px 16px;
+  box-shadow: var(--shadow);
+}
+.row-label {
+  font-size: 0.68rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  color: var(--muted);
+  text-align: center;
+  margin-bottom: 8px;
+}
+.row-label.bottom {
+  margin-bottom: 0;
+  margin-top: 8px;
+}
+.board-row {
+  display: flex;
+  gap: 10px;
+}
+.board-divider {
+  height: 1px;
+  background: var(--border);
+  margin: 14px 0;
+}
+
+
+/* ════════════════════════════════════════════════════
+   7. CASES (PITS)
+════════════════════════════════════════════════════ */
+.pit {
+  width: 72px;
+  height: 72px;
+  border-radius: 50%;
+  background: var(--seed-bg);
+  border: 2px solid var(--border);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  cursor: default;
+  position: relative;
+  user-select: none;
+  transition: background var(--t), border-color var(--t),
+              transform var(--t), box-shadow var(--t);
+}
+
+/* Nombre de graines affiché en chiffre */
+.pit .seed-count {
+  font-size: 1.3rem;
+  font-weight: 700;
+  color: var(--seed);
+  line-height: 1;
+}
+/* Points visuels pour les petits nombres */
+.pit .seed-dots {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 3px;
+  justify-content: center;
+  align-items: center;
+  max-width: 44px;
+  max-height: 44px;
+  padding: 4px;
+}
+.dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: var(--seed);
+  flex-shrink: 0;
+}
+
+/* Case vide */
+.pit.empty .seed-count {
+  color: var(--border);
+  font-size: 1rem;
+}
+
+/* Case légale (jouable) */
+.pit.legal {
+  cursor: pointer;
+  border-color: var(--gold);
+  background: #FBF5E6;
+}
+.pit.legal:hover {
+  background: #F5EAC8;
+  border-color: var(--accent);
+  transform: scale(1.09);
+  box-shadow: 0 4px 18px rgba(74,55,40,0.18);
+}
+
+
+/* ════════════════════════════════════════════════════
+   8. ZONE DE MESSAGE
+════════════════════════════════════════════════════ */
+#message-box {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 12px 20px;
+  font-size: 0.875rem;
+  color: var(--muted);
+  text-align: center;
+  max-width: 600px;
+  width: 100%;
+  min-height: 44px;
+  box-shadow: var(--shadow);
+  transition: color var(--t), border-color var(--t);
+}
+#message-box.info { color: var(--text);   border-color: var(--gold);   }
+#message-box.good { color: var(--active); border-color: var(--active); }
+#message-box.bad  { color: var(--danger); border-color: var(--danger); }
+
+
+/* ════════════════════════════════════════════════════
+   9. BOUTONS
+════════════════════════════════════════════════════ */
+#controls {
+  display: flex;
+  gap: 12px;
+}
+button {
+  padding: 10px 22px;
+  border-radius: 8px;
+  border: 1px solid var(--border);
+  background: var(--surface);
+  color: var(--text);
+  font-size: 0.875rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background var(--t), border-color var(--t);
+}
+button:hover {
+  background: var(--seed-bg);
+  border-color: var(--accent);
+}
+#btn-start {
+  background: var(--accent);
+  color: #fff;
+  border-color: var(--accent);
+}
+#btn-start:hover { background: #6B4030; }
+
+
+/* ════════════════════════════════════════════════════
+   10. OVERLAY FIN DE PARTIE
+════════════════════════════════════════════════════ */
+#end-overlay {
+  display: none;
+  position: fixed;
+  inset: 0;
+  background: rgba(26,23,20,0.55);
+  backdrop-filter: blur(4px);
+  align-items: center;
+  justify-content: center;
+  z-index: 100;
+}
+#end-overlay.visible {
+  display: flex;
+}
+#end-card {
+  background: var(--surface);
+  border-radius: 20px;
+  padding: 40px 48px;
+  text-align: center;
+  max-width: 340px;
+  box-shadow: 0 16px 48px rgba(74,55,40,0.25);
+}
+#end-card .trophy   { font-size: 3rem; margin-bottom: 12px; }
+#end-card h2        { font-size: 1.5rem; color: var(--accent); margin-bottom: 8px; }
+#end-card p         { color: var(--muted); font-size: 0.9rem; margin-bottom: 24px; line-height: 1.5; }
+#end-card button    {
+  background: var(--accent);
+  color: #fff;
+  border-color: var(--accent);
+  padding: 12px 32px;
+  font-size: 1rem;
+}
+#end-card button:hover { background: #6B4030; }
+
+
+/* ════════════════════════════════════════════════════
+   11. ANIMATIONS
+════════════════════════════════════════════════════ */
+@keyframes pulse {
+  0%   { background: var(--active-bg); }
+  50%  { background: #C8EAD8; }
+  100% { background: var(--seed-bg); }
+}
+@keyframes flash {
+  0%   { background: #FDECEA; }
+  50%  { background: #F5C5BC; }
+  100% { background: var(--seed-bg); }
+}
+.just-sown     { animation: pulse 450ms ease; }
+.just-captured { animation: flash 550ms ease; }
+
+
+/* ════════════════════════════════════════════════════
+   12. RESPONSIVE (petits écrans)
+════════════════════════════════════════════════════ */
+@media (max-width: 620px) {
+  .pit          { width: 44px; height: 44px; }
+  .pit .seed-count { font-size: 0.95rem; }
+  .dot          { width: 6px; height: 6px; }
+  .board-row    { gap: 5px; }
+  #board-container { padding: 12px; }
+  #config-zone  { flex-direction: column; }
+}
