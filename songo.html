@@ -6,17 +6,13 @@
   <title>Songho — Jeu de stratégie</title>
 
   <!--
-  ╔══════════════════════════════════════════════════════════════╗
-  ║  SONGHO / SONGO — Version 1 : 2 joueurs, même navigateur   ║
-  ║  Auteur  : [Ton nom]          Matricule : [Ton matricule]   ║
-  ║  Niveau  : Licence 2          Université de Yaoundé I       ║
-  ╚══════════════════════════════════════════════════════════════╝
+  SONGHO / SONGO — Version 1 : 2 joueurs sur un même navigateur  
+  Realise par BONDTOUM NDZIE ANAELLE AURORE 24F2605
 
-  FICHIERS DU PROJET
-  ────────────────────────────────────────────────
-  songo.html   ← structure de la page (ce fichier)
-  songo.css    ← mise en page et style visuel
-  songo.js     ← moteur du jeu + interface DOM
+  FICHIERS DU PROJET:
+  songo.html: structure de la page (ce fichier)
+  songo.css: mise en page et style visuel
+  songo.js: moteur du jeu + interface DOM
   -->
 
   <link rel="stylesheet" href="songo.css" />
@@ -24,19 +20,13 @@
 
 <body>
 
-  <!-- ══════════════════════════════════════════
-       EN-TÊTE
-  ══════════════════════════════════════════ -->
   <header>
     <h1>Songho</h1>
     <p>Jeu de semailles traditionnel · 2 joueurs</p>
     <p>Réalisé par BONDTOUM NDZIE ANAELLE AURORE 24F2605, Licence 2-Informatique</p>
   </header>
 
-
-  <!-- ══════════════════════════════════════════
-       CONFIGURATION : saisie des noms
-  ══════════════════════════════════════════ -->
+//Saisie des noms
   <div id="config-zone">
     <label>
       Joueur Nord
@@ -55,9 +45,7 @@
   </div>
 
 
-  <!-- ══════════════════════════════════════════
-       SCORES ET INDICATEUR DE TOUR
-  ══════════════════════════════════════════ -->
+//Score et indicateur de tours
   <div id="scores">
 
     <div class="score-card" id="card-north">
@@ -74,20 +62,8 @@
 
   </div>
 
-
-  <!-- ══════════════════════════════════════════
-       TABLIER
-
-       SENS D'AFFICHAGE (selon la formalisation) :
-         Rangée Nord : N6  N5  N4  N3  N2  N1  N0
-                       ←  Nord joue de droite à gauche
-         ────────────────────────────────────────
-         Rangée Sud  : S0  S1  S2  S3  S4  S5  S6
-                       Sud joue de gauche à droite  →
-
-       Les cases sont créées par songo.js (buildRow)
-       et leurs data-pit sont mis à jour par renderBoard().
-  ══════════════════════════════════════════ -->
+//Tablier
+  
   <div id="board-container">
 
     <!-- Étiquette et cases de Nord -->
@@ -101,21 +77,15 @@
     <div class="row-label bottom">Sud joue de gauche à droite →</div>
 
   </div>
-
-
-  <!-- ══════════════════════════════════════════
-       MESSAGE DE FEEDBACK
-  ══════════════════════════════════════════ -->
+  
+//Affichage du Message  
   <div id="message-box">Entrez vos noms puis cliquez sur « Nouvelle partie ».</div>
 
   <!-- Éléments cachés pour les noms dans les turn indicators (utilisés par JS) -->
   <span id="turn-name-north" style="display:none"></span>
   <span id="turn-name-south" style="display:none"></span>
 
-
-  <!-- ══════════════════════════════════════════
-       OVERLAY FIN DE PARTIE
-  ══════════════════════════════════════════ -->
+ //Overlay de fin de partie
   <div id="end-overlay">
     <div id="end-card">
       <div class="trophy" id="end-trophy">🏆</div>
