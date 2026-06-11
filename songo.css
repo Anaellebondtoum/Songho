@@ -1,28 +1,8 @@
-/*
-╔══════════════════════════════════════════════════════╗
-║  SONGHO — Feuille de style                          ║
-║  Auteur  : [Ton nom]   Matricule : [Ton matricule]  ║
-╚══════════════════════════════════════════════════════╝
 
-  SECTIONS
-  ─────────────────────────────────────────────────────
-  1. Variables & reset
-  2. Corps de page
-  3. En-tête
-  4. Zone de configuration (noms des joueurs)
-  5. Scores et indicateur de tour
-  6. Tablier
-  7. Cases (pits)
-  8. Zone de message
-  9. Boutons
-  10. Overlay fin de partie
-  11. Animations
-  12. Responsive
-*/
 :root {
   /* Nouvelles couleurs pour le thème Bois */
-  --bg        : #2c1d11; /* Fond de page sombre, style table en bois foncé */
-  --surface   : #e6baa1; /* Couleur du plateau : bois clair/moyen */
+  --bg        : #2c1d11; 
+  --surface   : #e6baa1; /* Couleur du plateau  */
   --border    : #5c3a21; /* Bordures bois foncé */
   --text      : #2c1d11;
   --muted     : #7a5335;
@@ -60,9 +40,7 @@
   cursor: pointer;
 }
 
-/* ════════════════════════════════════════════════════
-   1. VARIABLES & RESET
-════════════════════════════════════════════════════ */
+//Varaibles et Resets
 :root {
   --bg        : #F7F5F2;
   --surface   : #FFFFFF;
@@ -87,10 +65,7 @@
   padding: 0;
 }
 
-
-/* ════════════════════════════════════════════════════
-   2. CORPS DE PAGE
-════════════════════════════════════════════════════ */
+//Corps de page
 body {
   font-family: 'Segoe UI', system-ui, sans-serif;
   background: var(--bg);
@@ -103,10 +78,7 @@ body {
   gap: 20px;
 }
 
-
-/* ════════════════════════════════════════════════════
-   3. EN-TÊTE
-════════════════════════════════════════════════════ */
+//En-tete
 header {
   text-align: center;
 }
@@ -122,10 +94,7 @@ header p {
   margin-top: 4px;
 }
 
-
-/* ════════════════════════════════════════════════════
-   4. ZONE DE CONFIGURATION (noms des joueurs)
-════════════════════════════════════════════════════ */
+//Zone de configuration
 #config-zone {
   background: var(--surface);
   border: 1px solid var(--border);
@@ -165,10 +134,7 @@ header p {
   border-color: var(--accent);
 }
 
-
-/* ════════════════════════════════════════════════════
-   5. SCORES ET INDICATEUR DE TOUR
-════════════════════════════════════════════════════ */
+//Score et indicateur de tours
 #scores {
   display: flex;
   gap: 24px;
@@ -214,9 +180,7 @@ header p {
 }
 
 
-/* ════════════════════════════════════════════════════
-   6. TABLIER
-════════════════════════════════════════════════════ */
+//Tablier
 #board-container {
   background: var(--surface);
   border: 1px solid var(--border);
@@ -248,9 +212,7 @@ header p {
 }
 
 
-/* ════════════════════════════════════════════════════
-   7. CASES (PITS)
-════════════════════════════════════════════════════ */
+//Cases
 .pit {
   width: 72px;
   height: 72px;
@@ -314,9 +276,7 @@ header p {
 }
 
 
-/* ════════════════════════════════════════════════════
-   8. ZONE DE MESSAGE
-════════════════════════════════════════════════════ */
+//Zone de message
 #message-box {
   background: var(--surface);
   border: 1px solid var(--border);
@@ -336,9 +296,7 @@ header p {
 #message-box.bad  { color: var(--danger); border-color: var(--danger); }
 
 
-/* ════════════════════════════════════════════════════
-   9. BOUTONS
-════════════════════════════════════════════════════ */
+//Boutons
 #controls {
   display: flex;
   gap: 12px;
@@ -366,9 +324,7 @@ button:hover {
 #btn-start:hover { background: #6B4030; }
 
 
-/* ════════════════════════════════════════════════════
-   10. OVERLAY FIN DE PARTIE
-════════════════════════════════════════════════════ */
+//Overlay de fin de la partie
 #end-overlay {
   display: none;
   position: fixed;
@@ -403,9 +359,7 @@ button:hover {
 #end-card button:hover { background: #6B4030; }
 
 
-/* ════════════════════════════════════════════════════
-   11. ANIMATIONS
-════════════════════════════════════════════════════ */
+//Animations
 @keyframes pulse {
   0%   { background: var(--active-bg); }
   50%  { background: #C8EAD8; }
@@ -420,9 +374,7 @@ button:hover {
 .just-captured { animation: flash 550ms ease; }
 
 
-/* ════════════════════════════════════════════════════
-   12. RESPONSIVE (petits écrans)
-════════════════════════════════════════════════════ */
+//Pour les petits ecrans
 @media (max-width: 620px) {
   .pit          { width: 44px; height: 44px; }
   .pit .seed-count { font-size: 0.95rem; }
