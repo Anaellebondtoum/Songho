@@ -1,8 +1,7 @@
-
 :root {
   /* Nouvelles couleurs pour le thème Bois */
-  --bg        : #2c1d11; 
-  --surface   : #e6baa1; /* Couleur du plateau  */
+  --bg        : #2c1d11; /* Fond de page sombre, style table en bois foncé */
+  --surface   : #e6baa1; /* Couleur du plateau : bois clair/moyen */
   --border    : #5c3a21; /* Bordures bois foncé */
   --text      : #2c1d11;
   --muted     : #7a5335;
@@ -40,7 +39,9 @@
   cursor: pointer;
 }
 
-//Varaibles et Resets
+/* ════════════════════════════════════════════════════
+   1. VARIABLES & RESET
+════════════════════════════════════════════════════ */
 :root {
   --bg        : #F7F5F2;
   --surface   : #FFFFFF;
@@ -65,7 +66,10 @@
   padding: 0;
 }
 
-//Corps de page
+
+/* ════════════════════════════════════════════════════
+   2. CORPS DE PAGE
+════════════════════════════════════════════════════ */
 body {
   font-family: 'Segoe UI', system-ui, sans-serif;
   background: var(--bg);
@@ -78,7 +82,10 @@ body {
   gap: 20px;
 }
 
-//En-tete
+
+/* ════════════════════════════════════════════════════
+   3. EN-TÊTE
+════════════════════════════════════════════════════ */
 header {
   text-align: center;
 }
@@ -94,7 +101,10 @@ header p {
   margin-top: 4px;
 }
 
-//Zone de configuration
+
+/* ════════════════════════════════════════════════════
+   4. ZONE DE CONFIGURATION (noms des joueurs)
+════════════════════════════════════════════════════ */
 #config-zone {
   background: var(--surface);
   border: 1px solid var(--border);
@@ -134,7 +144,10 @@ header p {
   border-color: var(--accent);
 }
 
-//Score et indicateur de tours
+
+/* ════════════════════════════════════════════════════
+   5. SCORES ET INDICATEUR DE TOUR
+════════════════════════════════════════════════════ */
 #scores {
   display: flex;
   gap: 24px;
@@ -180,7 +193,9 @@ header p {
 }
 
 
-//Tablier
+/* ════════════════════════════════════════════════════
+   6. TABLIER
+════════════════════════════════════════════════════ */
 #board-container {
   background: var(--surface);
   border: 1px solid var(--border);
@@ -212,7 +227,9 @@ header p {
 }
 
 
-//Cases
+/* ════════════════════════════════════════════════════
+   7. CASES (PITS)
+════════════════════════════════════════════════════ */
 .pit {
   width: 72px;
   height: 72px;
@@ -276,7 +293,9 @@ header p {
 }
 
 
-//Zone de message
+/* ════════════════════════════════════════════════════
+   8. ZONE DE MESSAGE
+════════════════════════════════════════════════════ */
 #message-box {
   background: var(--surface);
   border: 1px solid var(--border);
@@ -296,7 +315,9 @@ header p {
 #message-box.bad  { color: var(--danger); border-color: var(--danger); }
 
 
-//Boutons
+/* ════════════════════════════════════════════════════
+   9. BOUTONS
+════════════════════════════════════════════════════ */
 #controls {
   display: flex;
   gap: 12px;
@@ -324,7 +345,9 @@ button:hover {
 #btn-start:hover { background: #6B4030; }
 
 
-//Overlay de fin de la partie
+/* ════════════════════════════════════════════════════
+   10. OVERLAY FIN DE PARTIE
+════════════════════════════════════════════════════ */
 #end-overlay {
   display: none;
   position: fixed;
@@ -359,7 +382,9 @@ button:hover {
 #end-card button:hover { background: #6B4030; }
 
 
-//Animations
+/* ════════════════════════════════════════════════════
+   11. ANIMATIONS
+════════════════════════════════════════════════════ */
 @keyframes pulse {
   0%   { background: var(--active-bg); }
   50%  { background: #C8EAD8; }
@@ -374,7 +399,9 @@ button:hover {
 .just-captured { animation: flash 550ms ease; }
 
 
-//Pour les petits ecrans
+/* ════════════════════════════════════════════════════
+   12. RESPONSIVE (petits écrans)
+════════════════════════════════════════════════════ */
 @media (max-width: 620px) {
   .pit          { width: 44px; height: 44px; }
   .pit .seed-count { font-size: 0.95rem; }
