@@ -1,48 +1,5 @@
-/* :root {
-  /* Nouvelles couleurs pour le thème Bois */
-  --bg        : #2c1d11; /* Fond de page sombre, style table en bois foncé */
-  --surface   : #e6baa1; /* Couleur du plateau : bois clair/moyen */
-  --border    : #5c3a21; /* Bordures bois foncé */
-  --text      : #2c1d11;
-  --muted     : #7a5335;
-  --accent    : #5c3a21;
-  --gold      : #d4af37;
-  --seed      : #3d2516; /* Graines foncées comme des billes de bois ou de néré */
-  --seed-bg   : #c69575; /* Intérieur des cases creuses */
-  --active    : #27593f;
-  --active-bg : #d0ebd5;
-  --danger    : #a63a1e;
-}
 
-/* Effet texture et relief pour le tablier */
-#board-container {
-  background: var(--surface);
-  border: 8px solid var(--border);
-  border-radius: 24px;
-  box-shadow: inset 0 0 20px rgba(0,0,0,0.4), 0 16px 40px rgba(0,0,0,0.6);
-  padding: 30px;
-}
-
-/* Effet creusé pour les cases (pits) */
-.pit {
-  background: var(--seed-bg);
-  border: 3px solid var(--border);
-  border-radius: 50%; /* Cases bien rondes, comme des trous */
-  box-shadow: inset 0 8px 12px rgba(0,0,0,0.3);
-  transition: all 0.2s ease;
-}
-
-/* Effet de surbrillance quand c'est une case jouable */
-.pit.playable:hover {
-  transform: scale(1.05);
-  box-shadow: inset 0 4px 6px rgba(0,0,0,0.2), 0 0 15px var(--active);
-  cursor: pointer;
-}
-*/
-
-/* ════════════════════════════════════════════════════
-   1. VARIABLES & RESET
-════════════════════════════════════════════════════ */
+/* Variables et Resets */
 :root {
   --bg        : #F7F5F2;
   --surface   : #FFFFFF;
@@ -68,9 +25,7 @@
 }
 
 
-/* ════════════════════════════════════════════════════
-   2. CORPS DE PAGE
-════════════════════════════════════════════════════ */
+/* Corps de la page */
 body {
   font-family: 'Segoe UI', system-ui, sans-serif;
   background: var(--bg);
@@ -84,9 +39,7 @@ body {
 }
 
 
-/* ════════════════════════════════════════════════════
-   3. EN-TÊTE
-════════════════════════════════════════════════════ */
+/* Entete */
 header {
   text-align: center;
 }
@@ -103,9 +56,7 @@ header p {
 }
 
 
-/* ════════════════════════════════════════════════════
-   4. ZONE DE CONFIGURATION (noms des joueurs)
-════════════════════════════════════════════════════ */
+/* Noms des joueurs */
 #config-zone {
   background: var(--surface);
   border: 1px solid var(--border);
@@ -146,9 +97,7 @@ header p {
 }
 
 
-/* ════════════════════════════════════════════════════
-   5. SCORES ET INDICATEUR DE TOUR
-════════════════════════════════════════════════════ */
+/* Scores et indicateurs de tours */
 #scores {
   display: flex;
   gap: 24px;
@@ -194,9 +143,7 @@ header p {
 }
 
 
-/* ════════════════════════════════════════════════════
-   6. TABLIER
-════════════════════════════════════════════════════ */
+/* Tablier */
 #board-container {
   background: var(--surface);
   border: 1px solid var(--border);
@@ -228,9 +175,7 @@ header p {
 }
 
 
-/* ════════════════════════════════════════════════════
-   7. CASES (PITS)
-════════════════════════════════════════════════════ */
+/* Cases */
 .pit {
   width: 72px;
   height: 72px;
@@ -294,9 +239,7 @@ header p {
 }
 
 
-/* ════════════════════════════════════════════════════
-   8. ZONE DE MESSAGE
-════════════════════════════════════════════════════ */
+/* Zone de message */
 #message-box {
   background: var(--surface);
   border: 1px solid var(--border);
@@ -316,9 +259,7 @@ header p {
 #message-box.bad  { color: var(--danger); border-color: var(--danger); }
 
 
-/* ════════════════════════════════════════════════════
-   9. BOUTONS
-════════════════════════════════════════════════════ */
+/* Boutons */
 #controls {
   display: flex;
   gap: 12px;
@@ -346,9 +287,7 @@ button:hover {
 #btn-start:hover { background: #6B4030; }
 
 
-/* ════════════════════════════════════════════════════
-   10. OVERLAY FIN DE PARTIE
-════════════════════════════════════════════════════ */
+/* Overlay de fin de partie */
 #end-overlay {
   display: none;
   position: fixed;
@@ -383,9 +322,7 @@ button:hover {
 #end-card button:hover { background: #6B4030; }
 
 
-/* ════════════════════════════════════════════════════
-   11. ANIMATIONS
-════════════════════════════════════════════════════ */
+/* Animations */
 @keyframes pulse {
   0%   { background: var(--active-bg); }
   50%  { background: #C8EAD8; }
@@ -400,9 +337,7 @@ button:hover {
 .just-captured { animation: flash 550ms ease; }
 
 
-/* ════════════════════════════════════════════════════
-   12. RESPONSIVE (petits écrans)
-════════════════════════════════════════════════════ */
+/* Petits ecrans */
 @media (max-width: 620px) {
   .pit          { width: 44px; height: 44px; }
   .pit .seed-count { font-size: 0.95rem; }
@@ -411,3 +346,4 @@ button:hover {
   #board-container { padding: 12px; }
   #config-zone  { flex-direction: column; }
 }
+
